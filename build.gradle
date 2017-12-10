@@ -1,0 +1,50 @@
+group "by.ibragimov.co2mini"
+version "0.1.0"
+
+buildscript {
+    ext.kotlin_version = "1.1.0"
+    ext.dependency_managment_plugin_version = "1.0.1.RELEASE"
+    ext.gradle_version = "3.4"
+
+    repositories {
+        jcenter()
+        maven {
+            url "https://dl.bintray.com/kotlin/kotlin-eap-1.1/"
+        }
+    }
+
+    dependencies {
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version")
+    }
+}
+
+subprojects {
+    apply plugin: "kotlin"
+
+    kotlin {
+        experimental {
+            coroutines "enable"
+        }
+    }
+
+    repositories {
+        jcenter()
+        maven { url "https://dl.bintray.com/kotlin/kotlin-eap-1.1/" }
+        maven { url "http://maven.objectstyle.org/nexus/content/repositories/bootique-snapshots/" }
+    }
+
+    dependencies {
+        compile("org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version")
+        compile("org.jetbrains.kotlin:kotlin-reflect:$kotlin_version")
+        compile("io.bootique:bootique:0.22-SNAPSHOT")
+        compile("org.jetbrains.kotlinx:kotlinx-coroutines-core:0.12")
+        compile("org.usb4java:usb4java:1.2.0")
+
+        testCompile "junit:junit:4.12" // TODO: Update to 5
+    }
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = "$gradle_version"
+    distributionUrl = "http://services.gradle.org/distributions/gradle-${gradle_version}-bin.zip"
+}
