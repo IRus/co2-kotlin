@@ -1,4 +1,3 @@
-include("server")
-include("agent")
+include("server", "agent")
 
 rootProject.name = "co2-kotlin"

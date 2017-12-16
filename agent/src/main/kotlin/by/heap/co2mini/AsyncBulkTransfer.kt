@@ -1,4 +1,4 @@
-package by.ibragimov.co2mini
+package by.heap.co2mini
 
 import org.usb4java.BufferUtils
 import org.usb4java.DeviceHandle

@@ -1,4 +1,4 @@
-package by.ibragimov.co2mini
+package by.heap.co2mini
 
 /**
  * TODO.
